@@ -9,9 +9,11 @@ using System.Windows;
 using System.Windows.Controls;
 
 namespace WorkWithTablesDesktop {
+
   #region Comments
+
   //     The [TableServiceClient] provides synchronous and asynchronous
-  //     methods to perform table level operations with Azure Tables 
+  //     methods to perform table level operations with Azure Tables
   //     hosted in Azure storage accounts or Azure Cosmos DB table API.
 
   //     The [TableClient] allows you to interact with Azure Tables
@@ -21,8 +23,10 @@ namespace WorkWithTablesDesktop {
   //     which defines an
   //     arbitrary set of properties on an entity as key-value pairs.
 
-  //     Create a custom [TableEntity] to get strongly typed properties for the entity. 
-  #endregion
+  //     Create a custom [TableEntity] to get strongly typed properties for the entity.
+
+  #endregion Comments
+
   public partial class MainWindow : Window {
 
     public MainWindow() {
@@ -49,7 +53,7 @@ namespace WorkWithTablesDesktop {
 
     private TableServiceClient GetTableServiceClient() {
       //   The [TableServiceClient] provides synchronous and asynchronous
-      //   methods to perform table level operations with Azure Tables 
+      //   methods to perform table level operations with Azure Tables
       //   hosted in Azure storage accounts or Azure Cosmos DB table API.
       var siteCredential = new TableSharedKeyCredential(accountName: _tableSettings.AccountName,
                                                 accountKey: _tableSettings.DbPrimaryAccessKey);
@@ -121,8 +125,7 @@ namespace WorkWithTablesDesktop {
     }
 
     private void RefreshRowsModelButton_Click(object sender, RoutedEventArgs e) {
-
-      // using the custom TradingCardEntity type instead of TableEntity 
+      // using the custom TradingCardEntity type instead of TableEntity
       // we can access the properties of the row, instead of using dictionary keys
       TableClient tableClient = GetTableClient();
       var filterString = $"BidPrice gt 10.00";
@@ -135,8 +138,6 @@ namespace WorkWithTablesDesktop {
       //  (filter: (e => e.BidPrice < 10 && e.CardFamily == "Stargazers"));
       CardsDataGrid1.ItemsSource = pageableCards;
       // ReadTableModelListBox.ItemsSource = pageableCards;
-
-
     }
 
     private void AddCardButton_Click(object sender, RoutedEventArgs e) {
@@ -176,16 +177,13 @@ namespace WorkWithTablesDesktop {
       UpdateRowsListBox();
     }
 
-    private void TabItem_Loaded(object sender, RoutedEventArgs e) {
-      UpdateRowsListBox();
-    }
-
     private void UpdateRowsListBox() {
       TableClient client = GetTableClient();
       Azure.Pageable<Models.TradingCardEntity> queryRowResults;
       queryRowResults = client.Query<Models.TradingCardEntity>();
       ShowRowsListBox.ItemsSource = queryRowResults;
     }
+
     private void UpdateRowsDataGrid() {
       TableClient client = GetTableClient();
       Azure.Pageable<Models.TradingCardEntity> cards;
@@ -198,13 +196,12 @@ namespace WorkWithTablesDesktop {
       Models.TradingCardEntity card = tableClient.GetEntity<Models.TradingCardEntity>(partitionKey: "102", rowKey: "Yodel");
 
       SingleItemTextBlock.Text = $"Name: {card.RowKey}, TeamName: {card.TeamName}, BidPrice: {card.BidPrice}";
-
     }
 
     private void BatchTransactionsButton_Click(object sender, RoutedEventArgs e) {
       // to batch transactions, build an enumerable of TableTransactionActions.
-      // // Executing the transaction is accomplished by passing this collection
-      // // to the SubmitTransaction method on the TableClient. 
+      // Executing the transaction is accomplished by passing this collection
+      // to the SubmitTransaction method on the TableClient.
 
       TableClient tableClient = GetTableClient();
 
@@ -216,7 +213,7 @@ namespace WorkWithTablesDesktop {
       newCard.CardFamily = "StarGazers";
       newCard.Planet = "Planet 998";
       newCard.TeamName = "SuperNovas";
-     
+
       // batch only works on the same partition!
       var anotherCard = new Models.TradingCardEntity();
       anotherCard.PartitionKey = "409";
@@ -230,8 +227,6 @@ namespace WorkWithTablesDesktop {
           new TableTransactionAction(TableTransactionActionType.UpsertReplace, newCard),
          new TableTransactionAction(TableTransactionActionType.UpsertReplace, anotherCard)
       };
-
-
 
       Response<IReadOnlyList<Response>> batchResult = tableClient.SubmitTransaction(batch);
       UpdateRowsDataGrid();
@@ -248,7 +243,6 @@ namespace WorkWithTablesDesktop {
       deleteAnotherCard.PartitionKey = "409";
       deleteAnotherCard.RowKey = "Xanfer";
 
-   
       var batch = new List<TableTransactionAction>
       {
           new TableTransactionAction(TableTransactionActionType.Delete,deleteCard ),
@@ -258,7 +252,6 @@ namespace WorkWithTablesDesktop {
       Response<IReadOnlyList<Response>> batchResult = tableClient.SubmitTransaction(batch);
       UpdateRowsDataGrid();
     }
-
 
     private void CardsDataGrid_AutoGeneratedColumns(object sender, EventArgs e) {
       var grid = sender as DataGrid;
@@ -272,6 +265,8 @@ namespace WorkWithTablesDesktop {
       UpdateRowsDataGrid();
     }
 
-
+    private void TabItem_Loaded(object sender, RoutedEventArgs e) {
+      UpdateRowsListBox();
+    }
   }
 }
