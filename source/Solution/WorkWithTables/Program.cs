@@ -68,8 +68,7 @@ public class Program {
     var configBuilder = new ConfigurationBuilder()
      .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
      .AddJsonFile("appsettings.json")
-     .AddUserSecrets<Program>()
-     .Build();
+          .Build();
 
     _appSettings = configBuilder.GetSection("TableSettings").Get<TableSettings>();
   }
