@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithTables", "WorkWithTables\WorkWithTables.csproj", "{B9E445E3-83C4-4F02-BA3C-FC0654CF94A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkWithTablesDesktop", "WorkWithTablesDesktop\WorkWithTablesDesktop.csproj", "{FF08405B-3467-4E37-AB61-6F28121B7284}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9E445E3-83C4-4F02-BA3C-FC0654CF94A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E445E3-83C4-4F02-BA3C-FC0654CF94A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E445E3-83C4-4F02-BA3C-FC0654CF94A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E445E3-83C4-4F02-BA3C-FC0654CF94A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF08405B-3467-4E37-AB61-6F28121B7284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF08405B-3467-4E37-AB61-6F28121B7284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF08405B-3467-4E37-AB61-6F28121B7284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF08405B-3467-4E37-AB61-6F28121B7284}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFA11B4C-9AFB-46CE-A024-523D05B052E7}
+	EndGlobalSection
+EndGlobal
