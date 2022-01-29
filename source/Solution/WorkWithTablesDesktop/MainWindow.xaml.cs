@@ -56,10 +56,10 @@ namespace WorkWithTablesDesktop {
       //   methods to perform table level operations with Azure Tables
       //   hosted in Azure storage accounts or Azure Cosmos DB table API.
       var siteCredential = new TableSharedKeyCredential(accountName: _tableSettings.AccountName,
-                                                accountKey: _tableSettings.DbPrimaryAccessKey);
+                                                        accountKey: _tableSettings.DbPrimaryAccessKey);
 
       var serviceClient = new TableServiceClient(endpoint: new Uri(_tableSettings.EndPoint),
-                                                credential: siteCredential);
+                                                 credential: siteCredential);
       return serviceClient;
     }
 
