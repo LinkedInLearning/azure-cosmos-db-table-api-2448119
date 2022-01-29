@@ -93,12 +93,17 @@ namespace WorkWithTablesDesktop {
     private void AddTableButton_Click(object sender, RoutedEventArgs e) {
       TableServiceClient serviceClient = GetTableServiceClient();
 
-      var table = serviceClient.CreateTableIfNotExists(NewTableTextbox.Text);
+      Response<TableItem> response = serviceClient.CreateTableIfNotExists(NewTableTextbox.Text);
       BindTableData();
-      if (table == null)
+      if (response == null)
       {
         MessageBox.Show($"{NewTableTextbox.Text} already exists in Cosmos DB");
       }
+			else
+			{
+        MessageBox.Show($"Response: {response.GetRawResponse().ReasonPhrase}");
+      }
+      
     }
 
     private void RefreshRowsButton_Click(object sender, RoutedEventArgs e) {
@@ -132,12 +137,23 @@ namespace WorkWithTablesDesktop {
       Azure.Pageable<Models.TradingCardEntity> pageableCards;
 
       pageableCards = tableClient.Query<Models.TradingCardEntity>(filter: filterString);
-      // or  use LinqExpression
+			#region LINQ
+			// or  use LinqExpression
+			//pageableCards = tableClient.Query<Models.TradingCardEntity>
+			//  (filter: (e => e.BidPrice < 10 && e.CardFamily == "Stargazers")); 
+			#endregion
+			CardsDataGrid1.ItemsSource = pageableCards;
 
-      //pageableCards = tableClient.Query<Models.TradingCardEntity>
-      //  (filter: (e => e.BidPrice < 10 && e.CardFamily == "Stargazers"));
+      
+    }
+
+    private void ShowAllRowsButton_Click(object sender, RoutedEventArgs e) {
+      TableClient tableClient = GetTableClient();
+   
+      Azure.Pageable<Models.TradingCardEntity> pageableCards;
+      pageableCards = tableClient.Query<Models.TradingCardEntity>();
       CardsDataGrid1.ItemsSource = pageableCards;
-      // ReadTableModelListBox.ItemsSource = pageableCards;
+   
     }
 
     private void AddCardButton_Click(object sender, RoutedEventArgs e) {
@@ -268,5 +284,7 @@ namespace WorkWithTablesDesktop {
     private void TabItem_Loaded(object sender, RoutedEventArgs e) {
       UpdateRowsListBox();
     }
-  }
+
+		
+	}
 }
