@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithTables", "WorkWithTables\WorkWithTables.csproj", "{B9E445E3-83C4-4F02-BA3C-FC0654CF94A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkWithTablesDesktop", "WorkWithTablesDesktop\WorkWithTablesDesktop.csproj", "{FF08405B-3467-4E37-AB61-6F28121B7284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkWithTablesDesktop", "WorkWithTablesDesktop\WorkWithTablesDesktop.csproj", "{FF08405B-3467-4E37-AB61-6F28121B7284}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrate", "Migrate", "{CA893CC6-1286-4DB3-9A61-D598B5D8C24E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
