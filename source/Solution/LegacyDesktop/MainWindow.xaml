@@ -5,71 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LegacyDesktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontSize='18'>
+        Title="MainWindow" Height="450" Width="900" FontSize='18'>
   <Window.Resources>
     <Style TargetType='DataGridRow'>
       <Setter Property="Foreground"
               Value="AntiqueWhite" />
+
     </Style>
     <Style TargetType="{x:Type DataGridColumnHeader}">
       <Setter Property="VerticalContentAlignment"
               Value="Center" />
       <Setter Property="Height"
               Value="35" />
-      <Setter Property="SeparatorBrush"
-              Value="Olive" />
+
       <Setter Property='Background'
               Value='DarkOliveGreen' />
       <Setter Property='Foreground'
               Value='Black' />
-      <Setter Property='SeparatorVisibility'
-              Value='Visible' />
+    
 
     </Style>
 
   </Window.Resources>
-    <Grid>
+  
+    <TabControl>
+      <TabItem Header='Legacy Data Grid'>
+     
+    
     <DataGrid x:Name='TotalsDataGrid' AutoGenerateColumns='False'
               AlternatingRowBackground="Olive"
               Foreground='AntiqueWhite'
               RowBackground='#FF6D7473'
-              Background='#FF6D7473'>
+              Background='#FF6D7473' GridLinesVisibility='Horizontal'>
 
       <DataGrid.Columns>
-        <DataGridTextColumn Header='PartitionKey' Binding='{Binding PartitionKey}'/>
-        <DataGridTextColumn Header='RowKey'
-                            Binding='{Binding RowKey}' />
-        <DataGridTemplateColumn MinWidth="4"
-                                MaxWidth="4"
-                                IsReadOnly="True"
-                                CanUserResize="False">
-          <DataGridTemplateColumn.HeaderStyle>
-            <Style TargetType="{x:Type DataGridColumnHeader}">
-          
-            
-            
-   
-            </Style>
-          </DataGridTemplateColumn.HeaderStyle>
-          <DataGridTemplateColumn.CellStyle>
-            <Style TargetType="{x:Type DataGridCell}">
-              <Setter Property="BorderBrush"
-                      Value="Transparent" />
-              <Setter Property="BorderThickness"
-                      Value="1" />
-              <Setter Property="Focusable"
-                      Value="False" />
-              
-            </Style>
-          </DataGridTemplateColumn.CellStyle>
-        </DataGridTemplateColumn>
-        <DataGridTextColumn Header='Comics Sold'
-                            Binding='{Binding ComicsSold}' />
-        <DataGridTextColumn Header='Cards Sold'
-                            Binding='{Binding CardsSold}' />
-        <DataGridTextColumn Header='Action Figures Sold'
+        <DataGridTextColumn Header='PartitionKey' Binding='{Binding PartitionKey}' MinWidth='140'/>
+          <DataGridTextColumn Header='RowKey'
+                              Binding='{Binding RowKey}'
+                              MinWidth='90' />
+
+          <DataGridTextColumn Header='Cards'
+                            Binding='{Binding CardsSold}' MinWidth='120' />
+        <DataGridTextColumn Header='Action Figures'
                             Binding='{Binding ActionFiguresSold}' />
       </DataGrid.Columns>
     </DataGrid>
-  </Grid>
+    </TabItem>
+  </TabControl>
+ 
 </Window>

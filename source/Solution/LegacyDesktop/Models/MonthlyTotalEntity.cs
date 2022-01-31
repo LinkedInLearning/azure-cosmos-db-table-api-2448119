@@ -10,6 +10,6 @@ namespace LegacyDesktop.Models {
 
     public int CardsSold { get; set; }
     public int ActionFiguresSold { get; set; }
-    public int ComicsSold { get; set; }
+    public int ComicsSold { get; set; } 
   }
 }
