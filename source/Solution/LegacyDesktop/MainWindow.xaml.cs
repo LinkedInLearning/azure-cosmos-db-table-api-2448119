@@ -30,8 +30,9 @@ namespace LegacyDesktop {
 
     private void ShowTableData() {
       CloudTable table = GetTableRef("MonthlyTotals");
+     //  var query = new TableQuery();
       var query = new TableQuery<Models.MonthlyTotalEntity>();
-      var totals = table.ExecuteQuery(query);
+      var totals = table.ExecuteQuery(query).ToList();
       TotalsDataGrid.ItemsSource = totals;
     }
 

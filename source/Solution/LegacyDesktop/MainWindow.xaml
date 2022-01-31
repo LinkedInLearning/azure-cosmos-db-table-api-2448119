@@ -39,14 +39,16 @@
               Background='#FF6D7473' GridLinesVisibility='Horizontal'>
 
       <DataGrid.Columns>
-        <DataGridTextColumn Header='PartitionKey' Binding='{Binding PartitionKey}' MinWidth='140'/>
-          <DataGridTextColumn Header='RowKey'
+        <DataGridTextColumn Header='Year' Binding='{Binding PartitionKey}' MinWidth='140'/>
+          <DataGridTextColumn Header='Month'
                               Binding='{Binding RowKey}'
                               MinWidth='90' />
 
           <DataGridTextColumn Header='Cards'
                             Binding='{Binding CardsSold}' MinWidth='120' />
-        <DataGridTextColumn Header='Action Figures'
+					<DataGridTextColumn Header='Comics'
+                            Binding='{Binding ComicsSold}' MinWidth='120' />
+					<DataGridTextColumn Header='Action Figures'
                             Binding='{Binding ActionFiguresSold}' />
       </DataGrid.Columns>
     </DataGrid>
